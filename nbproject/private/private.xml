@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/public/styles/contact_styles.css</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/productDetailServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/inc/footer.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/inc/banner.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/inc/header.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/data/MysqlDriver.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/DatabaseDao.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/model/Product.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/cart.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/Database.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/CreateServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/model/OrderDetailSesstion.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/NewServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/impl/ProductDaoImpl.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/index.html</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/ProductDao.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/UserDao.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/productDetail.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/conf/MANIFEST.MF</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/model/User.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/cartServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/home.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/MainApp.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/public/build/assets/app-67dcdfd2.css</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/public/assets/css/demo_1/style.css</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/Create.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/BaseServlet.java</file>
+        </group>
+    </open-files>
+</project-private>

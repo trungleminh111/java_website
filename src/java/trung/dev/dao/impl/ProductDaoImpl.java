@@ -138,4 +138,64 @@ public class ProductDaoImpl implements ProductDao {
         return productList;
     }
 
+    @Override
+    public List<Product> findByName(String keyWord) {
+        List<Product> productList = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM PRODUCTS WHERE NAME LIKE ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "%" + keyWord + "%");
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                String img = rs.getString("img");
+
+                Double price = rs.getDouble("price");
+                Integer quantity = rs.getInt("quantity");
+                Integer view = rs.getInt("view");
+                Integer categoryId = rs.getInt("category_id");
+                Timestamp createdAt = rs.getTimestamp("created_at");
+                productList.add(new Product(id, name, description, img, price, quantity, view, categoryId, createdAt));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return productList;
+    }
+
+    @Override
+    public List<Product> findByCategory(int category_id) {
+        List<Product> productList = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM PRODUCTS WHERE CATEGORY_ID=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, category_id);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                String img = rs.getString("img");
+
+                Double price = rs.getDouble("price");
+                Integer quantity = rs.getInt("quantity");
+                Integer view = rs.getInt("view");
+                Integer categoryId = rs.getInt("category_id");
+                Timestamp createdAt = rs.getTimestamp("created_at");
+                productList.add(new Product(id, name, description, img, price, quantity, view, categoryId, createdAt));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return productList;
+    }
+
 }

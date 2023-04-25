@@ -33,10 +33,10 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     public boolean insert(Category category) {
         try {
-            String sql = "INSERT INTO CATEGORIES(id, name, image) VALUES(NULL, ?, ?)";
+            String sql = "INSERT INTO CATEGORIES(id, name, img) VALUES(NULL, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, category.getName());
-            stmt.setString(2, category.getImage());
+            stmt.setString(2, category.getImg());
 
             return stmt.execute();
         } catch (SQLException e) {
@@ -49,10 +49,10 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     public boolean update(Category category) {
         try {
-            String sql = "UPDATE CATEGORIES SET NAME=?, Image=?, WHERE ID=?";
+            String sql = "UPDATE CATEGORIES SET NAME=?, IMG=?, WHERE ID=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, category.getName());
-            stmt.setString(2, category.getImage());
+            stmt.setString(2, category.getImg());
 
             stmt.setInt(4, category.getId());
 
@@ -89,8 +89,8 @@ public class CategoryDaoImpl implements CategoryDao {
             if (rs.next()) {
 
                 String name = rs.getString("name");
-                String image = rs.getString("image");
-                return new Category(id, name, image);
+                String img = rs.getString("img");
+                return new Category(id, name, img);
             }
         } catch (Exception e) {
             // TODO: handle exception
@@ -109,9 +109,9 @@ public class CategoryDaoImpl implements CategoryDao {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                String image = rs.getString("image");
+                String img = rs.getString("img");
 
-                categoryList.add(new Category(id, name, image));
+                categoryList.add(new Category(id, name, img));
             }
         } catch (SQLException ex) {
         }

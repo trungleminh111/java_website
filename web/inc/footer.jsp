@@ -6,162 +6,89 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<footer class="bg3 p-t-75 p-b-32">
-        <div class="container">
+<div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+    <div class="row px-xl-5 pt-5">
+        <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+            <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
+            <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor. Rebum tempor no vero est magna amet no</p>
+            <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>70 Nguyễn Huệ, TP Huế, Việt Nam</p>
+            <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>lmt151103@gmail.com</p>
+            <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+84 886 778 246</p>
+        </div>
+        <div class="col-lg-8 col-md-12">
             <div class="row">
-                <div class="col-sm-6 col-lg-3 p-b-50">
-                    <h4 class="stext-301 cl0 p-b-30">
-                        Categories
-                    </h4>
-
-                    <ul>
-                        <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Women
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Men
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Shoes
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Watches
-                            </a>
-                        </li>
-                    </ul>
+                <div class="col-md-4 mb-5">
+                    <h5 class="text-secondary text-uppercase mb-4">Quick Shop</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                        <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                    </div>
                 </div>
-
-                <div class="col-sm-6 col-lg-3 p-b-50">
-                    <h4 class="stext-301 cl0 p-b-30">
-                        Help
-                    </h4>
-
-                    <ul>
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Track Order
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Returns
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Shipping
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                FAQs
-                            </a>
-                        </li>
-                    </ul>
+                <div class="col-md-4 mb-5">
+                    <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                        <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                    </div>
                 </div>
-
-                <div class="col-sm-6 col-lg-3 p-b-50">
-                    <h4 class="stext-301 cl0 p-b-30">
-                        GET IN TOUCH
-                    </h4>
-
-                    <p class="stext-107 cl7 size-201">
-                        Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us
-                        on (+1) 96 716 6879
-                    </p>
-
-                    <div class="p-t-27">
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                            <i class="fa fa-instagram"></i>
-                        </a>
-
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                            <i class="fa fa-pinterest-p"></i>
-                        </a>
-                        </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 p-b-50">
-                    <h4 class="stext-301 cl0 p-b-30">
-                        Newsletter
-                    </h4>
-
-                    <form>
-                        <div class="wrap-input1 w-full p-b-4">
-                            <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email"
-                                placeholder="email@example.com">
-                            <div class="focus-input1 trans-04"></div>
-                        </div>
-
-                        <div class="p-t-18">
-                            <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-                                Subscribe
-                            </button>
+                <div class="col-md-4 mb-5">
+                    <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
+                    <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Your Email Address">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary">Sign Up</button>
+                            </div>
                         </div>
                     </form>
+                    <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
+                    <div class="d-flex">
+                        <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="p-t-40">
-                <div class="flex-c-m flex-w p-b-18">
-                    <a href="#" class="m-all-1">
-                        <img src="./public/images/icons/icon-pay-01.png" alt="ICON-PAY">
-                    </a>
-
-                    <a href="#" class="m-all-1">
-                        <img src="./public/images/icons/icon-pay-02.png" alt="ICON-PAY">
-                    </a>
-
-                    <a href="#" class="m-all-1">
-                        <img src="./public/images/icons/icon-pay-03.png" alt="ICON-PAY">
-                    </a>
-
-                    <a href="#" class="m-all-1">
-                        <img src="./public/images/icons/icon-pay-04.png" alt="ICON-PAY">
-                    </a>
-
-                    <a href="#" class="m-all-1">
-                        <img src="./public/images/icons/icon-pay-05.png" alt="ICON-PAY">
-                    </a>
-                </div>
-
-                <p class="stext-107 cl6 txt-center">
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;
-                    <script>
-                        document.write(new Date().getFullYear());
-                    </script> All rights reserved | Made with <i class="fa fa-heart-o"
-                        aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp;
-                    distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-                </p>
             </div>
         </div>
-    </footer>
-
-
-    <!-- Back to top -->
-    <div class="btn-back-to-top" id="myBtn">
-        <span class="symbol-btn-back-to-top">
-            <i class="zmdi zmdi-chevron-up"></i>
-        </span>
     </div>
+    <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="col-md-6 px-xl-0">
+            <p class="mb-md-0 text-center text-md-left text-secondary">
+                &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
+                by
+                <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
+            </p>
+        </div>
+        <div class="col-md-6 px-xl-0 text-center text-md-right">
+            <img class="img-fluid" src="img/payments.png" alt="">
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
 
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="./public/lib/easing/easing.min.js"></script>
+<script src="./public/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="./public/mail/jqBootstrapValidation.min.js"></script>
+<script src="./public/mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="./public/js/main.js"></script>

@@ -3,19 +3,19 @@ package trung.dev.dao.model;
 public class Category {
 	private int id;
 	private String name;
-	private String image;
+	private String img;
 	
 	
-	public Category(String name, String image) {
+	public Category(String name, String img) {
 		super();
 		this.name = name;
-		this.image = image;
+		this.img = img;
 	}
-	public Category(int id, String name, String image) {
+	public Category(int id, String name, String img) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.image = image;
+		this.img = img;
 	}
 	public int getId() {
 		return id;
@@ -29,11 +29,11 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getImage() {
-		return image;
+	public String getImg() {
+		return img;
 	}
-	public void setImage(String image) {
-		this.image = image;
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 

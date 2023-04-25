@@ -11,334 +11,274 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="./public/css/util.css" />
-        <link rel="stylesheet" type="text/css" href="./public/css/main.css" />
-        <link rel="icon" type="image/png" href="./public/images/icons/favicon.png" />
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./public/vendor/bootstrap/css/bootstrap.min.css" />
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./public/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./public/fonts/iconic/css/material-design-iconic-font.min.css" />
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./public/fonts/linearicons-v1.0.0/icon-font.min.css" />
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="'./public/vendor/animate/animate.css" />
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./public/vendor/css-hamburgers/hamburgers.min.css" />
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./public/vendor/animsition/css/animsition.min.css" />
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./public/vendor/select2/select2.min.css" />
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./public/vendor/perfect-scrollbar/perfect-scrollbar.css" />
+        <link href="./public/img/favicon.ico" rel="icon">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
+
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="./public/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="./public/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="./public/css/style.css" rel="stylesheet">
 
     </head>
     <body>
         <%@include file="./inc/header.jsp" %>
-        <section class="sec-product-detail bg0 p-t-65 p-b-60">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-lg-7 p-b-30">
-                        <div class="p-l-25 p-r-30 p-lr-0-lg">
-                            <div class="wrap-slick3 flex-sb flex-w">
-                                <div class="wrap-slick3-dots"></div>
-                                <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+        <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="HomeServlet">Home</a>
+                    <a class="breadcrumb-item text-dark" href="ShopServlet">Shop</a>
+                    <span class="breadcrumb-item active">Shop Detail</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+        <div class="container-fluid pb-5">
+            <div class="row px-xl-5">
+                <div class="col-lg-5 mb-30">
+                    <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner bg-light">
+                            <div class="carousel-item active">
+                                <img class="w-100 h-100" src="${product.img}" alt="Image">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100 h-100" src="${product.img}" alt="Image">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100 h-100" src="${product.img}" alt="Image">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100 h-100" src="${product.img}" alt="Image">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
+                            <i class="fa fa-2x fa-angle-left text-dark"></i>
+                        </a>
+                        <a class="carousel-control-next" href="#product-carousel" data-slide="next">
+                            <i class="fa fa-2x fa-angle-right text-dark"></i>
+                        </a>
+                    </div>
+                </div>
 
-                                <div class="slick3 gallery-lb">
-                                    <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
-                                        <div class="wrap-pic-w pos-relative">
-                                            <img src="${product.img}" alt="IMG-PRODUCT">
-
-                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
-                                                <i class="fa fa-expand"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
-                                        <div class="wrap-pic-w pos-relative">
-                                            <img src="" alt="IMG-PRODUCT">
-
-                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
-                                                <i class="fa fa-expand"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
-                                        <div class="wrap-pic-w pos-relative">
-                                            <img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
-                                                <i class="fa fa-expand"></i>
-                                            </a>
-                                        </div>
-                                    </div>
+                <div class="col-lg-7 h-auto mb-30">
+                    <div class="h-100 bg-light p-30">
+                        <h3>${product.name}</h3>
+                        <div class="d-flex mb-3">
+                            <div class="text-primary mr-2">
+                                <small class="fas fa-star"></small>
+                                <small class="fas fa-star"></small>
+                                <small class="fas fa-star"></small>
+                                <small class="fas fa-star-half-alt"></small>
+                                <small class="far fa-star"></small>
+                            </div>
+                            <small class="pt-1">(99 Reviews)</small>
+                        </div>
+                        <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
+                        <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit
+                            clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no sea
+                            Nonumy</p>
+                        <div class="d-flex mb-3">
+                            <strong class="text-dark mr-3">Sizes:</strong>
+                            <form>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="size-1" name="size">
+                                    <label class="custom-control-label" for="size-1">XS</label>
                                 </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="size-2" name="size">
+                                    <label class="custom-control-label" for="size-2">S</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="size-3" name="size">
+                                    <label class="custom-control-label" for="size-3">M</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="size-4" name="size">
+                                    <label class="custom-control-label" for="size-4">L</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="size-5" name="size">
+                                    <label class="custom-control-label" for="size-5">XL</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="d-flex mb-4">
+                            <strong class="text-dark mr-3">Colors:</strong>
+                            <form>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="color-1" name="color">
+                                    <label class="custom-control-label" for="color-1">Black</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="color-2" name="color">
+                                    <label class="custom-control-label" for="color-2">White</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="color-3" name="color">
+                                    <label class="custom-control-label" for="color-3">Red</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="color-4" name="color">
+                                    <label class="custom-control-label" for="color-4">Blue</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="color-5" name="color">
+                                    <label class="custom-control-label" for="color-5">Green</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="d-flex align-items-center mb-4 pt-2">
+                            <div class="input-group quantity mr-3" style="width: 130px;">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary btn-minus">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary btn-plus">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <form action="CartServlet" method="post">
+                                <input type="hidden" name="product_id" value="${product.id}"/>
+                                <input type="hidden" name="quantity" value="1"/>
+                                <input type="hidden" name="action" value="create"/>
+                                <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+                                    Cart</button>
+                            </form>
+
+                        </div>
+                        <div class="d-flex pt-2">
+                            <strong class="text-dark mr-2">Share on:</strong>
+                            <div class="d-inline-flex">
+                                <a class="text-dark px-2" href="">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a class="text-dark px-2" href="">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a class="text-dark px-2" href="">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a class="text-dark px-2" href="">
+                                    <i class="fab fa-pinterest"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-6 col-lg-5 p-b-30">
-                        <div class="p-r-50 p-t-5 p-lr-0-lg">
-                            <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                                ${product.name}
-                            </h4>
-
-                            <span class="mtext-106 cl2">
-                                ${product.price}
-                            </span>
-
-                            <p class="stext-102 cl3 p-t-23">
-                                Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
-                            </p>
-
-                            <!--  -->
-                            <div class="p-t-33">
-                                <div class="flex-w flex-r-m p-b-10">
-                                    <div class="size-203 flex-c-m respon6">
-                                        Size
-                                    </div>
-
-                                    <div class="size-204 respon6-next">
-                                        <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
-                                                <option>Choose an option</option>
-                                                <option>Size S</option>
-                                                <option>Size M</option>
-                                                <option>Size L</option>
-                                                <option>Size XL</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="flex-w flex-r-m p-b-10">
-                                    <div class="size-203 flex-c-m respon6">
-                                        Color
-                                    </div>
-
-                                    <div class="size-204 respon6-next">
-                                        <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
-                                                <option>Choose an option</option>
-                                                <option>Red</option>
-                                                <option>Blue</option>
-                                                <option>White</option>
-                                                <option>Grey</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            <!--  -->
-                            <div class="flex-w flex-m p-l-100 p-t-40 respon7">
-                                <div class="flex-m bor9 p-r-10 m-r-11">
-                                    <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
-                                        <i class="zmdi zmdi-favorite"></i>
-                                    </a>
-                                </div>
-
-                                <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-
-                                <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-
-                                <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </div>
-
-                            <div>
-                                <form action="cartServlet" method="post">
-                                    <input type="hidden" name="product_id" value="${product.id}"/>
-                                    <input type="hidden" name="quantity" value="1"/>
-                                    <input type="hidden" name="action" value="create"/>
-                                    <button type="submit" class="cart">Add to cart</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>   
-
                 </div>
-
-                <div class="bor10 m-t-50 p-t-43 p-b-40">
-                    <!-- Tab01 -->
-                    <div class="tab01">
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item p-b-10">
-                                <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
-                            </li>
-
-                            <li class="nav-item p-b-10">
-                                <a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional information</a>
-                            </li>
-
-                            <li class="nav-item p-b-10">
-                                <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a>
-                            </li>
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content p-t-43">
-                            <!-- - -->
-                            <div class="tab-pane fade show active" id="description" role="tabpanel">
-                                <div class="how-pos2 p-lr-15-md">
-                                    <p class="stext-102 cl6">
-                                        Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla sit amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit lectus interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim, cursus et elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum in, faucibus eu velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor sit amet orci nec iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec laoreet consequat, purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras in arcu sed metus rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
-                                    </p>
-                                </div>
+            </div>
+            <div class="row px-xl-5">
+                <div class="col">
+                    <div class="bg-light p-30">
+                        <div class="nav nav-tabs mb-4">
+                            <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Description</a>
+                            <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a>
+                            <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Reviews (0)</a>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tab-pane-1">
+                                <h4 class="mb-3">Product Description</h4>
+                                <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
+                                <p>Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum. Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.</p>
                             </div>
-
-                            <!-- - -->
-                            <div class="tab-pane fade" id="information" role="tabpanel">
+                            <div class="tab-pane fade" id="tab-pane-2">
+                                <h4 class="mb-3">Additional Information</h4>
+                                <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
                                 <div class="row">
-                                    <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                                        <ul class="p-lr-28 p-lr-15-sm">
-                                            <li class="flex-w flex-t p-b-7">
-                                                <span class="stext-102 cl3 size-205">
-                                                    Weight
-                                                </span>
-
-                                                <span class="stext-102 cl6 size-206">
-                                                    0.79 kg
-                                                </span>
+                                    <div class="col-md-6">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item px-0">
+                                                Sit erat duo lorem duo ea consetetur, et eirmod takimata.
                                             </li>
-
-                                            <li class="flex-w flex-t p-b-7">
-                                                <span class="stext-102 cl3 size-205">
-                                                    Dimensions
-                                                </span>
-
-                                                <span class="stext-102 cl6 size-206">
-                                                    110 x 33 x 100 cm
-                                                </span>
+                                            <li class="list-group-item px-0">
+                                                Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
                                             </li>
-
-                                            <li class="flex-w flex-t p-b-7">
-                                                <span class="stext-102 cl3 size-205">
-                                                    Materials
-                                                </span>
-
-                                                <span class="stext-102 cl6 size-206">
-                                                    60% cotton
-                                                </span>
+                                            <li class="list-group-item px-0">
+                                                Duo amet accusam eirmod nonumy stet et et stet eirmod.
                                             </li>
-
-                                            <li class="flex-w flex-t p-b-7">
-                                                <span class="stext-102 cl3 size-205">
-                                                    Color
-                                                </span>
-
-                                                <span class="stext-102 cl6 size-206">
-                                                    Black, Blue, Grey, Green, Red, White
-                                                </span>
+                                            <li class="list-group-item px-0">
+                                                Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
                                             </li>
-
-                                            <li class="flex-w flex-t p-b-7">
-                                                <span class="stext-102 cl3 size-205">
-                                                    Size
-                                                </span>
-
-                                                <span class="stext-102 cl6 size-206">
-                                                    XL, L, M, S
-                                                </span>
+                                        </ul> 
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item px-0">
+                                                Sit erat duo lorem duo ea consetetur, et eirmod takimata.
                                             </li>
-                                        </ul>
+                                            <li class="list-group-item px-0">
+                                                Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
+                                            </li>
+                                            <li class="list-group-item px-0">
+                                                Duo amet accusam eirmod nonumy stet et et stet eirmod.
+                                            </li>
+                                            <li class="list-group-item px-0">
+                                                Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
+                                            </li>
+                                        </ul> 
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- - -->
-                            <div class="tab-pane fade" id="reviews" role="tabpanel">
+                            <div class="tab-pane fade" id="tab-pane-3">
                                 <div class="row">
-                                    <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                                        <div class="p-b-30 m-lr-15-sm">
-                                            <!-- Review -->
-                                            <div class="flex-w flex-t p-b-68">
-                                                <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                                                    <img src="images/avatar-01.jpg" alt="AVATAR">
+                                    <div class="col-md-6">
+                                        <h4 class="mb-4">1 review for "Product Name"</h4>
+                                        <div class="media mb-4">
+                                            <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                            <div class="media-body">
+                                                <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
+                                                <div class="text-primary mb-2">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                    <i class="far fa-star"></i>
                                                 </div>
-
-                                                <div class="size-207">
-                                                    <div class="flex-w flex-sb-m p-b-17">
-                                                        <span class="mtext-107 cl2 p-r-20">
-                                                            Ariana Grande
-                                                        </span>
-
-                                                        <span class="fs-18 cl11">
-                                                            <i class="zmdi zmdi-star"></i>
-                                                            <i class="zmdi zmdi-star"></i>
-                                                            <i class="zmdi zmdi-star"></i>
-                                                            <i class="zmdi zmdi-star"></i>
-                                                            <i class="zmdi zmdi-star-half"></i>
-                                                        </span>
-                                                    </div>
-
-                                                    <p class="stext-102 cl6">
-                                                        Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos
-                                                    </p>
-                                                </div>
+                                                <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
                                             </div>
-
-                                            <!-- Add review -->
-                                            <form class="w-full">
-                                                <h5 class="mtext-108 cl2 p-b-7">
-                                                    Add a review
-                                                </h5>
-
-                                                <p class="stext-102 cl6">
-                                                    Your email address will not be published. Required fields are marked *
-                                                </p>
-
-                                                <div class="flex-w flex-m p-t-50 p-b-23">
-                                                    <span class="stext-102 cl3 m-r-16">
-                                                        Your Rating
-                                                    </span>
-
-                                                    <span class="wrap-rating fs-18 cl11 pointer">
-                                                        <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                        <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                        <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                        <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                        <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                        <input class="dis-none" type="number" name="rating">
-                                                    </span>
-                                                </div>
-
-                                                <div class="row p-b-25">
-                                                    <div class="col-12 p-b-5">
-                                                        <label class="stext-102 cl3" for="review">Your review</label>
-                                                        <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
-                                                    </div>
-
-                                                    <div class="col-sm-6 p-b-5">
-                                                        <label class="stext-102 cl3" for="name">Name</label>
-                                                        <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
-                                                    </div>
-
-                                                    <div class="col-sm-6 p-b-5">
-                                                        <label class="stext-102 cl3" for="email">Email</label>
-                                                        <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
-                                                    </div>
-                                                </div>
-
-                                                <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-                                                    Submit
-                                                </button>
-                                            </form>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="mb-4">Leave a review</h4>
+                                        <small>Your email address will not be published. Required fields are marked *</small>
+                                        <div class="d-flex my-3">
+                                            <p class="mb-0 mr-2">Your Rating * :</p>
+                                            <div class="text-primary">
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="message">Your Review *</label>
+                                                <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name">Your Name *</label>
+                                                <input type="text" class="form-control" id="name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Your Email *</label>
+                                                <input type="email" class="form-control" id="email">
+                                            </div>
+                                            <div class="form-group mb-0">
+                                                <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -346,25 +286,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-                <span class="stext-107 cl6 p-lr-25">
-                    SKU: JAK-01
-                </span>
-
-                <span class="stext-107 cl6 p-lr-25">
-                    Categories: Jacket, Men
-                </span>
-            </div>
-        </section>
-       <script src="./public/vendor/jquery/jquery-3.2.1.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="./public/vendor/animsition/js/animsition.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="./public/vendor/bootstrap/js/popper.js"></script>
-        <script src="./public/vendor/bootstrap/js/bootstrap.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="./public/vendor/select2/select2.min.js"></script>
-         <script src="./public/js/main.js"></script>
+        </div>
+        <%@include file="./inc/footer.jsp" %>
     </body>
 </html>

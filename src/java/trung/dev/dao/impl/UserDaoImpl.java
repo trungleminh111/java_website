@@ -4,113 +4,144 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import trung.dev.dao.UserDao;
+import trung.dev.dao.model.Product;
 import trung.dev.dao.model.User;
 import trung.dev.data.MysqlDriver;
+import trung.dev.util.MD5Hashing;
 
 public class UserDaoImpl implements UserDao {
-	private Connection conn;
 
-	public UserDaoImpl() {
-		this.conn = MysqlDriver.getInstance().getConnection();
-	}
+    private Connection conn;
 
-	@Override
-	public boolean insert(User user) {
-		// TODO Auto-generated method stub
-		try {
-			String sql = "INSERT INTO USERS(ID, EMAIL, PASSWORD,ROLE) VALUES(NULL, ?, ?, ?)";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, user.getEmail());
-			stmt.setString(2, user.getPassword());
-			stmt.setString(3, user.getRole());
+    public UserDaoImpl() {
+        this.conn = MysqlDriver.getInstance().getConnection();
+    }
 
-			return stmt.execute();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return false;
-	}
+    @Override
+    public boolean insert(User user) {
+        // TODO Auto-generated method stub
+        try {
+            String sql = "INSERT INTO USERS(ID,NAME, EMAIL, PASSWORD,ROLE) VALUES(NULL,?, ?, ?, ?)";
 
-	@Override
-	public User find(int id) {
-		// TODO Auto-generated method stub
-		try {
-			String sql = "SELECT * FROM USERS WHERE EMAIL=? AND PASSWORD=?";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, id);
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, user.getName());
 
-			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, MD5Hashing.getMD5(user.getPassword()));
+            stmt.setString(4, user.getRole());
+            stmt.execute();
 
-				String email = rs.getString("email");
-				String password = rs.getString("password");
+            return stmt.execute();
+        } catch (Exception e) {
 
-				String role = rs.getString("role");
-				return new User(id,email, password, role);
+        }
+        return false;
+    }
 
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return null;
-	}
+    @Override
+    public User find(int id) {
+        // TODO Auto-generated method stub
+        try {
+            String sql = "SELECT * FROM USERS WHERE EMAIL=? AND PASSWORD=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
 
-	@Override
-	public boolean update(User user) {
-		// TODO Auto-generated method stub
-		try {
-			String sql = "UPDATE USERS SET EMAIL=?, PASSWORD=?, ROLE=?, WHERE ID=?";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, user.getEmail());
-			stmt.setString(2, user.getPassword());
-			stmt.setString(3, user.getRole());
-			return stmt.execute();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return false;
-	}
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
 
-	@Override
-	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		try {
+                String role = rs.getString("role");
+                return new User(id, name, email, password, role);
 
-			String sql = "DELETE FROM USERS WHERE ID=?";
-			PreparedStatement stmt = conn.prepareStatement(sql);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return null;
+    }
 
-			stmt.setInt(1, id);
-			return stmt.execute();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return false;
-	}
+    @Override
+    public boolean update(User user) {
+        // TODO Auto-generated method stub
+        try {
+            String sql = "UPDATE USERS SET NAME=? EMAIL=?, PASSWORD=?, ROLE=?, WHERE ID=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getRole());
+            return stmt.execute();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return false;
+    }
 
-	@Override
-	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		List<User> userList = new ArrayList<>();
+    @Override
+    public boolean delete(int id) {
+        // TODO Auto-generated method stub
+        try {
 
-		try {
-			String sql = "SELECT * FROM USERS WHERE ID > ?";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, 2);
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				int id = rs.getInt("id");
-				String email = rs.getString("email");
-				String password = rs.getString("password");
-				String role = rs.getString("role");
-				userList.add(new User(id, email, password, role));
-			}
-		} catch (SQLException ex) {
-		}
-		return userList;
-	}
+            String sql = "DELETE FROM USERS WHERE ID=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+            return stmt.execute();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return false;
+    }
+
+    @Override
+    public List<User> findAll() {
+        // TODO Auto-generated method stub
+        List<User> userList = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM USERS WHERE ID > ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, 2);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                String role = rs.getString("role");
+                userList.add(new User(id, name, email, password, role));
+            }
+        } catch (SQLException ex) {
+        }
+        return userList;
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        String sql = "SELECT * FROM USERS WHERE EMAIL=?";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String password = rs.getString("password");
+                String role = rs.getString("role");
+
+                return new User(id, name, email, password, role);
+            }
+        } catch (SQLException ex) {
+
+        }
+        return null;
+    }
 
 }

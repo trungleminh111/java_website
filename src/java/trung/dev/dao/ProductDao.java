@@ -11,6 +11,7 @@ public interface ProductDao {
 	public boolean delete(int id);
 	public Product find(int productId);
 	public List<Product> findAll();
+        public List<Product> getSortedProducts(String sortOrder);
         public List<Product> findByName(String name);
         public List<Product> findByCategory(int category_id);
 

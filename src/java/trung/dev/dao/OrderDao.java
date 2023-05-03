@@ -13,13 +13,15 @@ import trung.dev.dao.model.Order;
  */
 public interface OrderDao {
 
-    public boolean insert(Order product);
+    public boolean insert(Order order);
 
     public boolean update(Order order);
 
     public boolean delete(int id);
 
-    public Order find(int orderId);
+    public Order find(int id);
 
     public List<Order> findAll();
+
+    public Order find(String code);
 }

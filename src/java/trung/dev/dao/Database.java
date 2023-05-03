@@ -5,6 +5,8 @@
 package trung.dev.dao;
 
 import trung.dev.dao.impl.CategoryDaoImpl;
+import trung.dev.dao.impl.OrderDaoImpl;
+import trung.dev.dao.impl.OrderDetailDaoImpl;
 import trung.dev.dao.impl.ProductDaoImpl;
 import trung.dev.dao.impl.UserDaoImpl;
 
@@ -24,9 +26,20 @@ public class Database extends DatabaseDao {
         return new ProductDaoImpl();
     }
 
+    
     @Override
     public CategoryDao getCategoryDao() {
         return new CategoryDaoImpl();
     }
-    
+
+    @Override
+    public OrderDao getOrderDao() {
+        return new OrderDaoImpl();
+    }
+
+    @Override
+    public OrderDetailDao getOrderDetailDao() {
+       return new OrderDetailDaoImpl();
+    }
+   
 }

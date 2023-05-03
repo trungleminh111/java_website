@@ -4,6 +4,8 @@
  */
 package trung.dev.dao.model;
 
+import trung.dev.dao.DatabaseDao;
+
 /**
  *
  * @author Administrator
@@ -71,4 +73,11 @@ public class OrderDetail {
         this.price = price;
     }
 
+    public Product getProduct() {
+        return DatabaseDao.getInstance().getProductDao().find(product_id);
+    }
+
+    public Order getOrder() {
+        return DatabaseDao.getInstance().getOrderDao().find(order_id);
+    }
 }

@@ -47,36 +47,37 @@ public class UserDaoImpl implements UserDao {
     public User find(int id) {
         // TODO Auto-generated method stub
         try {
-            String sql = "SELECT * FROM USERS WHERE EMAIL=? AND PASSWORD=?";
+            String sql = "SELECT * FROM USERS WHERE ID=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
-
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
-
                 String role = rs.getString("role");
+                ;
                 return new User(id, name, email, password, role);
-
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             // TODO: handle exception
         }
         return null;
+
     }
 
     @Override
     public boolean update(User user) {
         // TODO Auto-generated method stub
         try {
-            String sql = "UPDATE USERS SET NAME=? EMAIL=?, PASSWORD=?, ROLE=?, WHERE ID=?";
+            String sql = "UPDATE USERS SET NAME=?, EMAIL=?, PASSWORD=?, ROLE=? WHERE ID=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, user.getName());
             stmt.setString(2, user.getEmail());
             stmt.setString(3, user.getPassword());
             stmt.setString(4, user.getRole());
+            stmt.setInt(5, user.getId());
+
             return stmt.execute();
         } catch (Exception e) {
             // TODO: handle exception

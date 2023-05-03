@@ -96,8 +96,8 @@ public class LoginServlet extends BaseServlet {
                    //Set session login
                 HttpSession session = request.getSession();
                 session.setAttribute("user", findUser);
-                if (findUser.getRole().equals("Admin")) {
-                    response.sendRedirect("DashboardServlet");
+                if (findUser.getRole().equals("admin")) {
+                    response.sendRedirect("DashBoardServlet");
                 } else {
                     response.sendRedirect("HomeServlet");
                 }

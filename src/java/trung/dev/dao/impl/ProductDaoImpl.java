@@ -26,7 +26,7 @@ public class ProductDaoImpl implements ProductDao {
     public boolean insert(Product product) {
         // TODO Auto-generated method stub
         try {
-            String sql = "INSERT INTO PRODUCTS(ID, NAME, DESCRIPTION, PRICE, QUANTITY, VIEW, CATEGORY_ID, CREATED_AT)VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO PRODUCTS(ID, NAME, DESCRIPTION, IMG,PRICE, QUANTITY, VIEW, CATEGORY_ID, CREATED_AT)VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, product.getName());
             stmt.setString(2, product.getDescription());
@@ -195,6 +195,51 @@ public class ProductDaoImpl implements ProductDao {
             ex.printStackTrace();
         }
 
+        return productList;
+    }
+
+    @Override
+    public List<Product> getSortedProducts(String sortOrder) {
+        List<Product> productList = new ArrayList<>();
+        try {
+
+            String sql = "SELECT * FROM PRODUCTS";
+            if (sortOrder != null && !sortOrder.isEmpty()) {
+                switch (sortOrder) {
+                    case "priceAsc":
+                        sql += " ORDER BY PRICE ASC";
+                        break;
+                    case "priceDesc":
+                        sql += " ORDER BY PRICE DESC";
+                        break;
+                    case "newest":
+                        sql += " ORDER BY ID DESC";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                String img = rs.getString("img");
+
+                Double price = rs.getDouble("price");
+                Integer quantity = rs.getInt("quantity");
+                Integer view = rs.getInt("view");
+                Integer categoryId = rs.getInt("category_id");
+                Timestamp createdAt = rs.getTimestamp("created_at");
+                productList.add(new Product(id, name, description, img, price, quantity, view, categoryId, createdAt));
+            }
+
+        } catch (Exception e) {
+        }
         return productList;
     }
 

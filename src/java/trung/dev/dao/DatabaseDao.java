@@ -23,7 +23,11 @@ public abstract class DatabaseDao {
     public abstract UserDao getUserDao();
 
     public abstract ProductDao getProductDao();
+
     public abstract CategoryDao getCategoryDao();
 
-    
+    public abstract OrderDao getOrderDao();
+
+    public abstract OrderDetailDao getOrderDetailDao();
+
 }

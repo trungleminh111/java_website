@@ -110,7 +110,7 @@
 
                     <c:forEach items="${categoryList}" var="category" begin="0" end="3">
                         <a href="CategoryServlet?category_id=${category.id}" class="nav-item nav-link">${category.name}</a>
-                    </c:forEach>
+                    </c:forEach>  
 
                 </div>
             </nav>

@@ -20,7 +20,7 @@ public interface OrderDetailDao {
 
     public boolean delete(int id);
 
-    public OrderDetail find(int orderId);
+    public OrderDetail find(int id);
 
     public List<OrderDetail> findAll();
 }

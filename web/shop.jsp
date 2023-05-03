@@ -31,16 +31,16 @@
     <body>
         <%@include file="./inc/header.jsp" %>
         <div class="container-fluid">
-        <div class="row px-xl-5">
-            <div class="col-12">
-                <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="HomeServlet">Home</a>
-                    <a class="breadcrumb-item text-dark" href="ShopServlet">Shop</a>
-                    <span class="breadcrumb-item active">Shop List</span>
-                </nav>
+            <div class="row px-xl-5">
+                <div class="col-12">
+                    <nav class="breadcrumb bg-light mb-30">
+                        <a class="breadcrumb-item text-dark" href="HomeServlet">Home</a>
+                        <a class="breadcrumb-item text-dark" href="ShopServlet">Shop</a>
+                        <span class="breadcrumb-item active">Shop List</span>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
         <div class="container-fluid">
             <div class="row px-xl-5">
                 <%@include file="./inc/sideBar.jsp" %>
@@ -53,22 +53,16 @@
                                     <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button>
                                 </div>
                                 <div class="ml-2">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Sorting</button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">Latest</a>
-                                            <a class="dropdown-item" href="#">Popularity</a>
-                                            <a class="dropdown-item" href="#">Best Rating</a>
-                                        </div>
-                                    </div>
-                                    <div class="btn-group ml-2">
-                                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Showing</button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">10</a>
-                                            <a class="dropdown-item" href="#">20</a>
-                                            <a class="dropdown-item" href="#">30</a>
-                                        </div>
-                                    </div>
+                                    <form action="ShopServlet" method="get">
+                                        <label for="sortOrder">Sắp xếp theo:</label>
+                                        <select id="sortOrder" class="py-1 border-0" name="sortOrder">
+                                            <option value="priceAsc">Giá từ thấp đến cao</option>
+                                            <option value="priceDesc">Giá từ cao đến thấp</option>
+                                            <option value="newest">Sản phẩm mới nhất</option>
+                                        </select>
+                                        <button class="py-1 border-0 px-2 bg-warning" type="submit">Lọc</button>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
@@ -105,19 +99,19 @@
                         </c:forEach>
 
                     </div>
-                   
+
                 </div>
-                                         <div class="col-12">
-                        <nav>
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item disabled"><a class="page-link" href="#">Previous</span></a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+                <div class="col-12">
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled"><a class="page-link" href="#">Previous</span></a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
             <%@include file="./inc/footer.jsp" %>
     </body>

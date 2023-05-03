@@ -3,18 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/inc/header.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/impl/OrderDetailDaoImpl.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/model/Order.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/CartServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/data/MysqlDriver.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/DatabaseDao.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/cart.jsp</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/model/Product.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/RegisterServlet.java</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/impl/UserDaoImpl.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/Database.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/impl/CategoryDaoImpl.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/CheckOutServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/util/StringHelper.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/impl/ProductDaoImpl.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/OrderDetailDao.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/ProductDao.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/model/User.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/model/OrderDetailSession.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/OrderDao.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/impl/UserDaoImpl.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/register.jsp</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/util/Flash.java</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/web/inc/header.jsp</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/CartServlet.java</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/data/MysqlDriver.java</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/util/StringHelper.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/dao/impl/OrderDaoImpl.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/HELLOWORL/src/java/trung/dev/BaseServlet.java</file>
         </group>
     </open-files>
 </project-private>

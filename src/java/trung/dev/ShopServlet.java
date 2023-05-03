@@ -21,27 +21,24 @@ import trung.dev.dao.model.Product;
  */
 public class ShopServlet extends BaseServlet {
 
-    
-    
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         ProductDao productDao = DatabaseDao.getInstance().getProductDao();
-        List<Product> productList = productDao.findAll();
-       
+        String sortOrder = request.getParameter("sortOrder");
+        List<Product> productList = productDao.getSortedProducts(sortOrder);
+
         request.setAttribute("productList", productList);
         request.getRequestDispatcher("shop.jsp").include(request, response);
+        
 
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
-    }
 
-   
+    }
 
 }

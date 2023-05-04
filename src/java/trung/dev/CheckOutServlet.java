@@ -22,7 +22,6 @@ import trung.dev.dao.model.OrderDetail;
 import trung.dev.dao.model.OrderDetailSession;
 import trung.dev.util.StringHelper;
 
-
 /**
  *
  * @author Administrator
@@ -67,20 +66,18 @@ public class CheckOutServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-               HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user == null) {
             response.sendRedirect("LoginServlet");
-        } else {
+        }else{
             OrderDao orderDao = DatabaseDao.getInstance().getOrderDao();
             String code = StringHelper.randomString(9);
             Order order = new Order(code, "order", "pending", user.getId());
             orderDao.insert(order);
-
+            
             order = orderDao.find(code);
-
             OrderDetailDao orderDetailDao = DatabaseDao.getInstance().getOrderDetailDao();
-
             List<OrderDetailSession> cart = (List<OrderDetailSession>) session.getAttribute("cart");
             if (cart != null) {
                 for (OrderDetailSession ods : cart) {
@@ -105,7 +102,7 @@ public class CheckOutServlet extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**

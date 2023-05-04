@@ -132,11 +132,12 @@ public class OrderDaoImpl implements OrderDao {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, code);
             ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
+             while (rs.next()) {
                 int id = rs.getInt("id");
                 String description = rs.getString("description");
                 String status = rs.getString("status");
                 int userId = rs.getInt("user_id");
+
                 return new Order(id, code, description, status, userId);
             }
 

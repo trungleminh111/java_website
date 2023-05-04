@@ -30,30 +30,30 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
     @Override
     public boolean insert(OrderDetail orderDetail) {
         try {
-            String sql = "INSERT INTO ORDERDETAIL(ID,AMOUNT,PRODUCT_ID,ORDER_ID,PRICE) VALUES(NULL,?,?,?,?)";
+           String sql = "INSERT INTO ORDER_DETAILS(id, product_id, order_id,quantity, price) VALUES(NULL,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, orderDetail.getAmount());
-            stmt.setInt(2, orderDetail.getProduct_id());
-            stmt.setInt(3, orderDetail.getOrder_id());
-            stmt.setDouble(4, orderDetail.getPrice());
+            stmt.setInt(1, orderDetail.productId);
+            stmt.setInt(2, orderDetail.orderId);
+            stmt.setInt(3, orderDetail.quantity);
+            stmt.setDouble(4, orderDetail.price);
             stmt.execute();
-
             return stmt.execute();
         } catch (Exception e) {
 
         }
+
         return false;
     }
 
     @Override
     public boolean update(OrderDetail orderDetail) {
         try {
-            String sql = "UPDATE ORDERDETAIL SET  AMOUNT=?, PRODUCT_ID=?, ORDER_ID =?, PRICE=? WHERE ID=?";
+            String sql = "UPDATE ORDER_DETAILS SET  ORDER_ID=?, PRODUCT_ID =?,QUANTITY=?, PRICE=? WHERE ID=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, orderDetail.getAmount());
-            stmt.setInt(2, orderDetail.getProduct_id());
-            stmt.setInt(3, orderDetail.getOrder_id());
-            stmt.setDouble(4, orderDetail.getPrice());
+            stmt.setInt(1, orderDetail.productId);
+            stmt.setInt(2, orderDetail.orderId);
+            stmt.setInt(3, orderDetail.quantity);
+            stmt.setDouble(4, orderDetail.price);
             stmt.execute();
         } catch (SQLException ex) {
 

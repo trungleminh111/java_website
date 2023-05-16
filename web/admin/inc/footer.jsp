@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <footer class="footer py-4  ">
     <div class="container-fluid">
         <div class="row align-items-center justify-content-lg-between">
@@ -116,6 +117,7 @@
 <script src="./public/admin/assets/js/core/bootstrap.min.js"></script>
 <script src="./public/admin/assets/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="./public/admin/assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="./public/admin/assets/js/plugins/chartjs.min.js"></script>
 
 <script>
                         var win = navigator.platform.indexOf('Win') > -1;

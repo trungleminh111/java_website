@@ -11,6 +11,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import java.util.List;
 import trung.dev.dao.DatabaseDao;
 import trung.dev.dao.OrderDao;
@@ -28,41 +31,6 @@ import trung.dev.util.StringHelper;
  */
 public class CheckOutServlet extends BaseServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CheckOutServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CheckOutServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -70,18 +38,21 @@ public class CheckOutServlet extends BaseServlet {
         User user = (User) session.getAttribute("user");
         if (user == null) {
             response.sendRedirect("LoginServlet");
-        }else{
+        } else {
+            
             OrderDao orderDao = DatabaseDao.getInstance().getOrderDao();
             String code = StringHelper.randomString(9);
             Order order = new Order(code, "order", "pending", user.getId());
             orderDao.insert(order);
-            
+
             order = orderDao.find(code);
+
             OrderDetailDao orderDetailDao = DatabaseDao.getInstance().getOrderDetailDao();
+
             List<OrderDetailSession> cart = (List<OrderDetailSession>) session.getAttribute("cart");
             if (cart != null) {
                 for (OrderDetailSession ods : cart) {
-                    OrderDetail orderDetail = new OrderDetail(ods.getProductId(), order.getId(), ods.getQuantity(), ods.getProductPrice());
+                    OrderDetail orderDetail = new OrderDetail(ods.getQuantity(), order.getId(), ods.getProductId(), ods.getProductPrice());
                     orderDetailDao.insert(orderDetail);
                 }
             }
@@ -89,6 +60,7 @@ public class CheckOutServlet extends BaseServlet {
             session.removeAttribute("cart");
             response.sendRedirect("CartServlet");
         }
+
     }
 
     /**
@@ -102,8 +74,10 @@ public class CheckOutServlet extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
+
+   
 
     /**
      * Returns a short description of the servlet.

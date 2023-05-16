@@ -14,6 +14,9 @@ import trung.dev.dao.model.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import java.util.ArrayList;
 
 /**
@@ -22,72 +25,68 @@ import java.util.ArrayList;
  */
 public class OrderDaoImpl implements OrderDao {
 
-    private Connection conn;
-
-    public OrderDaoImpl() {
-        this.conn = MysqlDriver.getInstance().getConnection();
-    }
-
     @Override
-    public boolean insert(Order order) {
+    public void insert(Order order) {
+        // TODO Auto-generated method stub
+        Connection conn = MysqlDriver.getInstance().getConnection();
         try {
-            String sql = "INSERT INTO ORDERS(ID,CODE, DESCRIPTION, STATUS,USER_ID) VALUES(NULL,?, ?, ?, ?)";
-
+            String sql = "INSERT INTO ORDERS(id, code, description, status, user_id) VALUES(NULL,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, order.getCode());
-
-            stmt.setString(2, order.getDescription());
-
-            stmt.setString(3, order.getStatus());
-            stmt.setInt(4, order.getUserId());
+            stmt.setString(1, order.code);
+            stmt.setString(2, order.description);
+            stmt.setString(3, order.status);
+            stmt.setInt(4, order.userId);
             stmt.execute();
-
-            return stmt.execute();
         } catch (Exception e) {
-
+            // TODO: handle exception
+            Logger.getLogger("insert order").log(Level.SEVERE, e.toString());
         }
-        return false;
     }
 
     @Override
-    public boolean update(Order order) {
-
+    public void update(Order order) {
+        // TODO Auto-generated method stub
+        Connection conn = MysqlDriver.getInstance().getConnection();
         try {
-            String sql = "UPDATE ORDERs SET CODE=?, STATUS=?, USER_ID=? where id=?";
+            String sql = "UPDATE ORDERS SET code=?, DESCRIPTION=?, status=?, user_id=? WHERE ID=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, order.getCode());
-            stmt.setString(2, order.getStatus());
-            stmt.setInt(3, order.getUserId());
-            stmt.setInt(4, order.getId());
+            stmt.setString(1, order.code);
+            stmt.setString(2, order.description);
+            stmt.setString(3, order.status);
+            stmt.setInt(4, order.userId);
+            stmt.setInt(5, order.id);
             stmt.execute();
-        } catch (SQLException ex) {
-
+        } catch (Exception e) {
+            // TODO: handle exception
         }
-        return false;
     }
 
     @Override
-    public boolean delete(int id) {
-
+    public void delete(int orderId) {
+        // TODO Auto-generated method stub
         try {
+            Connection conn = MysqlDriver.getInstance().getConnection();
             String sql = "DELETE FROM ORDERS WHERE ID=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id);
-            stmt.execute();
-        } catch (SQLException ex) {
 
+            stmt.setInt(1, orderId);
+            stmt.execute();
+        } catch (Exception e) {
+            // TODO: handle exception
         }
-        return false;
     }
 
     @Override
-    public Order find(int id) {
-        String sql = "SELECT * FROM ORDERS WHERE ID=?";
+    public Order find(int orderId) {
+        // TODO Auto-generated method stub
+        Connection conn = MysqlDriver.getInstance().getConnection();
         try {
+            String sql = "SELECT * FROM ORDERS WHERE ID=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id);
+            stmt.setInt(1, orderId);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
+                int id = rs.getInt("id");
                 String code = rs.getString("code");
                 String description = rs.getString("description");
                 String status = rs.getString("status");
@@ -95,55 +94,179 @@ public class OrderDaoImpl implements OrderDao {
 
                 return new Order(id, code, description, status, userId);
             }
-        } catch (SQLException ex) {
-
+        } catch (Exception e) {
+            // TODO: handle exception
         }
         return null;
     }
 
     @Override
     public List<Order> findAll() {
-        List<Order> orderList = new ArrayList<Order>();
+        // TODO Auto-generated method stub
+        List<Order> orderList = new ArrayList<>();
+        Connection conn = MysqlDriver.getInstance().getConnection();
         try {
-            String sql = "SELECT *FROM ORDERS WHERE ID > ?";
+            String sql = "SELECT * FROM ORDERS";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, 2);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String code = rs.getString("code");
                 String description = rs.getString("description");
                 String status = rs.getString("status");
-                int userId = rs.getInt("user_id");
-
-                orderList.add(new Order(id, code, description, status, userId));
+                int user_id = rs.getInt("user_id");
+                orderList.add(new Order(id, code, description, status, user_id));
             }
-        } catch (Exception ex) {
-            // TODO: handle exception
+        } catch (SQLException ex) {
         }
+
         return orderList;
     }
 
     @Override
     public Order find(String code) {
-       
+        Connection conn = MysqlDriver.getInstance().getConnection();
         try {
             String sql = "SELECT * FROM ORDERS WHERE CODE = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, code);
             ResultSet rs = stmt.executeQuery();
-             while (rs.next()) {
+            if (rs.next()) {
                 int id = rs.getInt("id");
                 String description = rs.getString("description");
                 String status = rs.getString("status");
                 int userId = rs.getInt("user_id");
-
                 return new Order(id, code, description, status, userId);
             }
 
         } catch (SQLException e) {
         }
         return null;
+    }
+
+    @Override
+    public List<Order> findByStatus(String status) {
+        List<Order> orderList = new ArrayList<>();
+        Connection conn = MysqlDriver.getInstance().getConnection();
+        try {
+            String sql = "SELECT * FROM ORDERS WHERE STATUS=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, status);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String code = rs.getString("code");
+                String description = rs.getString("description");
+                int userId = rs.getInt("user_id");
+                orderList.add(new Order(id, code, description, status, userId));
+            }
+        } catch (SQLException ex) {
+        }
+
+        return orderList;
+    }
+
+    @Override
+    public int countOrderByDay(String date) {
+        int count = 0;
+        Connection conn = MysqlDriver.getInstance().getConnection();
+        String sql = "SELECT COUNT(*) AS count FROM orders where date(created_at)=?";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, date);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt("count");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return count;
+    }
+
+    @Override
+    public int countOrder() {
+        String sql = "SELECT COUNT(*) AS count FROM orders";
+        try {
+            Connection conn = MysqlDriver.getInstance().getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int countOrder = rs.getInt("count");
+                return countOrder;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    @Override
+    public int countPendingOrder() {
+        String sql = "SELECT COUNT(*) AS count FROM orders WHERE STATUS = 'PENDING'";
+        try {
+            Connection conn = MysqlDriver.getInstance().getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int countPendingOrder = rs.getInt("count");
+                return countPendingOrder;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    @Override
+    public int countShippingOrder() {
+        String sql = "SELECT COUNT(*) AS count FROM orders WHERE STATUS = 'SHIPPING'";
+        try {
+            Connection conn = MysqlDriver.getInstance().getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int countShippingOrder = rs.getInt("count");
+                return countShippingOrder;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    @Override
+    public int countDeliveredOrder() {
+        String sql = "SELECT COUNT(*) AS count FROM orders WHERE STATUS = 'DELIVERED'";
+        try {
+            Connection conn = MysqlDriver.getInstance().getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int countDeliveredOrder = rs.getInt("count");
+                return countDeliveredOrder;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    @Override
+    public int countCanceledOrder() {
+        String sql = "SELECT COUNT(*) AS count FROM orders WHERE STATUS = 'CANCELED'";
+        try {
+            Connection conn = MysqlDriver.getInstance().getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int countDeliveredOrder = rs.getInt("count");
+                return countDeliveredOrder;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 
 }

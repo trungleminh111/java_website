@@ -50,7 +50,7 @@
                                         new Product
                                     </div>
                                     <div class="card-body">
-                                        <form action="EditProductServlet" method="post">
+                                        <form action="EditProductServlet" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="product_id" value="${product.id}"/>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Name</label>
@@ -59,8 +59,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Image</label>
-                                                <input type="text" name="img" value="${product.img}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter image">
-
+                                                <input type="file" name="img" value="" class="form-control" id="imgInput" aria-describedby="emailHelp" placeholder="Enter image">
+                                                <img id="imgPreview" src="${product.img}" alt="${product.name}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Description</label>
@@ -101,9 +101,21 @@
             </div>
             <%@include file="../inc/footer.jsp" %>
         </main>
+        <script>
+            const imgInput = document.getElementById('imgInput');
+            const imgPreview = document.getElementById('imgPreview');
 
-
-
+            imgInput.addEventListener('change', function () {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.addEventListener('load', function () {
+                        imgPreview.src = reader.result;
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="./public/admin/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

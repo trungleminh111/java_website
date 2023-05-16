@@ -7,10 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import trung.dev.dao.ProductDao;
 import trung.dev.dao.model.Product;
-import trung.dev.dao.model.User;
+
 
 import trung.dev.data.MysqlDriver;
 
@@ -241,6 +242,22 @@ public class ProductDaoImpl implements ProductDao {
         } catch (Exception e) {
         }
         return productList;
+    }
+
+    @Override
+    public int countProduct() {
+        String sql = "SELECT COUNT(*) AS count FROM products";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int countProduct = rs.getInt("count");
+                return countProduct;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 
 }

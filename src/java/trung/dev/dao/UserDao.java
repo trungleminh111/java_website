@@ -18,4 +18,5 @@ public interface UserDao {
 
     public User findByEmail(String email);
 
+    public int countUser();
 }

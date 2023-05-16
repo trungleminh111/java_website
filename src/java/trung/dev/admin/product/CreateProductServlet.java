@@ -10,6 +10,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,11 +24,14 @@ import trung.dev.dao.DatabaseDao;
 import trung.dev.dao.ProductDao;
 import trung.dev.dao.model.Category;
 import trung.dev.dao.model.Product;
+import trung.dev.util.Constants;
+import jakarta.servlet.annotation.MultipartConfig;
 
 /**
  *
  * @author Administrator
  */
+@MultipartConfig
 public class CreateProductServlet extends BaseAdminServlet {
 
     /**
@@ -82,14 +90,26 @@ public class CreateProductServlet extends BaseAdminServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
+
+        // Lưu hình ảnh sản phẩm vào thư mục trên server
+        // Lưu file vào thư mục trên server
+        Part filePart = request.getPart("img");
+        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        InputStream fileContent = filePart.getInputStream();
+        Files.copy(fileContent, new File(uploadPath + File.separator + fileName).toPath());
+
+// Lưu thông tin sản phẩm vào cơ sở dữ liệu
+        String imageUrl = "upload/" + fileName;
         String name = request.getParameter("name");
-        String img = request.getParameter("img");
+
         String description = request.getParameter("description");
         double price = Double.parseDouble(request.getParameter("price"));
-        String quantity = request.getParameter("quantity");
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
         int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 
-        Product product = new Product(name, description, img, price, categoryId, 1, categoryId, null);
+        Product product = new Product(name, description, imageUrl, price, quantity, 1, categoryId, null);
         ProductDao productDao = DatabaseDao.getInstance().getProductDao();
         productDao.insert(product);
 

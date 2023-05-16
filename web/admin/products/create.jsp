@@ -51,7 +51,7 @@
                                         Create new Product
                                     </div>
                                     <div class="card-body">
-                                        <form action="CreateProductServlet" method="post">
+                                        <form action="CreateProductServlet" method="post" enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Name</label>
                                                 <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
@@ -59,7 +59,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Image</label>
-                                                <input type="text" name="img" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter image">
+                                                <input type="file" name="img" class="form-control" id="imgInput" aria-describedby="emailHelp" placeholder="Enter image">
+                                                <img id="imgPreview" src="#" alt="Preview" style="max-width: 300px; display: none;">
 
                                             </div>
                                             <div class="form-group">
@@ -96,9 +97,20 @@
             </div>
             <%@include file="../inc/footer.jsp" %>
         </main>
+        <script>
+            const imgInput = document.querySelector('#imgInput');
+            const imgPreview = document.querySelector('#imgPreview');
 
-
-
+            imgInput.addEventListener('change', function () {
+                const file = this.files[0];
+                const reader = new FileReader();
+                reader.addEventListener('load', function () {
+                    imgPreview.src = reader.result;
+                    imgPreview.style.display = 'block';
+                });
+                reader.readAsDataURL(file);
+            });
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="./public/admin/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

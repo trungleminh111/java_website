@@ -10,9 +10,8 @@ import java.io.Serializable;
  *
  * @author Administrator
  */
-public class OrderDetailSession implements Serializable {
-
-    private int productId;
+public class OrderDetailSession implements Serializable{
+     private int productId;
     private String productName;
     private String productImg;
     private int quantity;
@@ -65,5 +64,5 @@ public class OrderDetailSession implements Serializable {
     public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
-
+    
 }

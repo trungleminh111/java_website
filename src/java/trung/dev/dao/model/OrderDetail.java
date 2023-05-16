@@ -13,26 +13,23 @@ import trung.dev.dao.DatabaseDao;
 public class OrderDetail {
 
     public int id;
-    public int productId;
+    public int amount;
     public int orderId;
-    public int quantity;
+    public int productId;
     public double price;
-    public double amount;
 
-    public OrderDetail(int productId, int orderId, int quantity, double price) {
-        super();
-        this.productId = productId;
+    public OrderDetail(int amount, int orderId, int productId, double price) {
+        this.amount = amount;
         this.orderId = orderId;
-        this.quantity = quantity;
+        this.productId = productId;
         this.price = price;
     }
 
-    public OrderDetail(int id, int productId, int orderId, int quantity, double price) {
-        super();
+    public OrderDetail(int id, int amount, int orderId, int productId, double price) {
         this.id = id;
-        this.productId = productId;
+        this.amount = amount;
         this.orderId = orderId;
-        this.quantity = quantity;
+        this.productId = productId;
         this.price = price;
     }
 
@@ -44,12 +41,12 @@ public class OrderDetail {
         this.id = id;
     }
 
-    public int getProductId() {
-        return productId;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public int getOrderId() {
@@ -60,12 +57,12 @@ public class OrderDetail {
         this.orderId = orderId;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public double getPrice() {
@@ -75,4 +72,12 @@ public class OrderDetail {
     public void setPrice(double price) {
         this.price = price;
     }
-}
+
+    public Product getProduct() {
+        return DatabaseDao.getInstance().getProductDao().find(productId);
+    }
+
+    public Order getOrder() {
+        return DatabaseDao.getInstance().getOrderDao().find(orderId);
+    }
+}   

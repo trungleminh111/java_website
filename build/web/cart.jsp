@@ -102,11 +102,11 @@
                     </table>
                 </div>
                 <div class="col-lg-4">
-                    <form class="mb-30" action="">
+                    <form class="mb-30" action="DiscountServlet" method="post">
                         <div class="input-group">
-                            <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code">
+                            <input type="text" class="form-control border-0 p-4" name="promoCode" placeholder="Coupon Code">
                             <div class="input-group-append">
-                                <button class="btn btn-primary">Apply Coupon</button>
+                                <button type="submit" class="btn btn-primary">Apply Coupon</button>
                             </div>
                         </div>
                     </form>
@@ -127,7 +127,12 @@
                                 <h5>Total</h5>
                                 <h5>$${total}</h5>
                             </div>
-                            <button class="btn btn-block btn-primary font-weight-bold my-3 py-3"><a href="CheckOutServlet">Proceed To Checkout</a></button>
+
+                            <div class="input-group-append">
+                                <button class="btn btn-primary">
+                                    <a href="CheckOutServlet" style="color: #000" class="font-weight-bold"> Process to checkout</a>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

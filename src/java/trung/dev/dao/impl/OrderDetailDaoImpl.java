@@ -11,7 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import trung.dev.dao.OrderDetailDao;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import trung.dev.dao.model.OrderDetail;
 import trung.dev.data.MysqlDriver;
 
@@ -21,105 +22,124 @@ import trung.dev.data.MysqlDriver;
  */
 public class OrderDetailDaoImpl implements OrderDetailDao {
 
-    private Connection conn;
-
-    public OrderDetailDaoImpl() {
-        this.conn = MysqlDriver.getInstance().getConnection();
-    }
-
     @Override
-    public boolean insert(OrderDetail orderDetail) {
+    public void insert(OrderDetail orderDetail) {
+        // TODO Auto-generated method stub
+        Connection conn = MysqlDriver.getInstance().getConnection();
         try {
-           String sql = "INSERT INTO ORDER_DETAILS(id, product_id, order_id,quantity, price) VALUES(NULL,?,?,?,?)";
+            String sql = "INSERT INTO ORDER_DETAILS(id, amount, order_id, product_id, price ) VALUES(NULL,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, orderDetail.productId);
+            stmt.setInt(1, orderDetail.amount);
             stmt.setInt(2, orderDetail.orderId);
-            stmt.setInt(3, orderDetail.quantity);
+            stmt.setInt(3, orderDetail.productId);
             stmt.setDouble(4, orderDetail.price);
             stmt.execute();
-            return stmt.execute();
         } catch (Exception e) {
-
+            // TODO: handle exception
+            Logger.getLogger("insert order_detail").log(Level.SEVERE, e.toString());
         }
-
-        return false;
     }
 
     @Override
-    public boolean update(OrderDetail orderDetail) {
+    public void update(OrderDetail orderDetail) {
+        // TODO Auto-generated method stub
+        Connection conn = MysqlDriver.getInstance().getConnection();
         try {
-            String sql = "UPDATE ORDER_DETAILS SET  ORDER_ID=?, PRODUCT_ID =?,QUANTITY=?, PRICE=? WHERE ID=?";
+            String sql = "UPDATE ORDER_DETAILS SET amount=?, order_id=?, product_id=?, price=? WHERE ID=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, orderDetail.productId);
+            stmt.setInt(1, orderDetail.amount);
             stmt.setInt(2, orderDetail.orderId);
-            stmt.setInt(3, orderDetail.quantity);
+            stmt.setInt(3, orderDetail.productId);
             stmt.setDouble(4, orderDetail.price);
+            stmt.setInt(5, orderDetail.id);
             stmt.execute();
-        } catch (SQLException ex) {
-
+        } catch (Exception e) {
+            // TODO: handle exception
         }
-        return false;
-
     }
 
     @Override
-    public boolean delete(int id) {
+    public void delete(int orderDetailId) {
+        // TODO Auto-generated method stub
         try {
-            String sql = "DELETE FROM ORDERDETAIL WHERE ID=?";
+            Connection conn = MysqlDriver.getInstance().getConnection();
+            String sql = "DELETE FROM ORDER_DETAILS WHERE ID=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id);
-            stmt.execute();
-        } catch (SQLException ex) {
 
+            stmt.setInt(1, orderDetailId);
+            stmt.execute();
+        } catch (Exception e) {
+            // TODO: handle exception
         }
-        return false;
     }
 
     @Override
-    public OrderDetail find(int id) {
-        String sql = "SELECT * FROM ORDERDETAIL WHERE ID=?";
+    public OrderDetail find(int orderDetailId) {
+        // TODO Auto-generated method stub
+        Connection conn = MysqlDriver.getInstance().getConnection();
         try {
+            String sql = "SELECT * FROM ORDER_DETAILS WHERE ID=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id);
+            stmt.setInt(1, orderDetailId);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
+                int id = rs.getInt("id");
                 int amount = rs.getInt("amount");
-                int productId = rs.getInt("product_id");
-
                 int orderId = rs.getInt("order_id");
+                int productId = rs.getInt("product_id");
                 double price = rs.getInt("price");
-
-                return new OrderDetail(id, amount, productId, orderId, price);
+                return new OrderDetail(id, amount, orderId, productId, price);
             }
-        } catch (SQLException ex) {
-
+        } catch (Exception e) {
+            // TODO: handle exception
         }
         return null;
     }
 
     @Override
     public List<OrderDetail> findAll() {
-        List<OrderDetail> orderDetailsList = new ArrayList<OrderDetail>();
+        // TODO Auto-generated method stub
+        List<OrderDetail> orderDetailList = new ArrayList<>();
+        Connection conn = MysqlDriver.getInstance().getConnection();
         try {
-            String sql = "SELECT *FROM ORDERDETAIL WHERE ID > ?";
+            String sql = "SELECT * FROM orderDetailS";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, 2);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
+                int amount = rs.getInt("amount");
+                int orderId = rs.getInt("order_id");
+                int productId = rs.getInt("product_id");
+                double price = rs.getInt("price");
+                orderDetailList.add(new OrderDetail(id, amount, orderId, productId, price));
+            }
+        } catch (SQLException ex) {
+        }
 
+        return orderDetailList;
+    }
+
+    @Override
+    public List<OrderDetail> findByOrder(int orderId) {
+        List<OrderDetail> orderdetail = new ArrayList<>();
+        Connection conn = MysqlDriver.getInstance().getConnection();
+        try {
+            String sql = "SELECT * FROM ORDER_DETAILS WHERE ORDER_ID = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, orderId);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
                 int amount = rs.getInt("amount");
                 int productId = rs.getInt("product_id");
-
-                int orderId = rs.getInt("order_id");
-                double price = rs.getInt("price");
-
-                orderDetailsList.add(new OrderDetail(id, amount, productId, orderId, price));
+                double price = rs.getDouble("price");
+                orderdetail.add(new OrderDetail(id, productId, orderId, amount, price));
             }
-        } catch (Exception ex) {
-            // TODO: handle exception
+        } catch (SQLException ex) {
         }
-        return orderDetailsList;
+
+        return orderdetail;
     }
 
 }

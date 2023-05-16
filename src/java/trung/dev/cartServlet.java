@@ -21,9 +21,9 @@ import trung.dev.dao.model.Product;
  *
  * @author Administrator
  */
-public class CartServlet extends BaseServlet {
+public class CartServlet extends HttpServlet {
 
-    @Override
+      @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -63,8 +63,8 @@ public class CartServlet extends BaseServlet {
             default:
                 throw new AssertionError();
         }
+        
     }
-
     private void updateCart(HttpSession session, List<OrderDetailSession> cart, OrderDetailSession find, int value) {
         for (OrderDetailSession ods : cart) {
             if (ods.getProductId() == find.getProductId()) {
@@ -146,11 +146,12 @@ public class CartServlet extends BaseServlet {
         for (int i = 0; i < cart.size(); i++) {
             if (cart.get(i).getProductId() == productId) {
                 cart.remove(i);
-            } else {
-
+            }else {
+                
             }
             response.sendRedirect("CartServlet");
             session.setAttribute("cart", cart);
         }
     }
+
 }

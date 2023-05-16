@@ -4,15 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+
 import java.util.ArrayList;
 import java.util.List;
-
 import trung.dev.dao.UserDao;
-import trung.dev.dao.model.Product;
+
 import trung.dev.dao.model.User;
 import trung.dev.data.MysqlDriver;
 import trung.dev.util.MD5Hashing;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserDaoImpl implements UserDao {
 
@@ -145,4 +146,19 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
+    @Override
+    public int countUser() {
+        String sql = "SELECT COUNT(*) AS count FROM users";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int countUser = rs.getInt("count");
+                return countUser;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 }
